@@ -1,6 +1,7 @@
-import { useState, useEffect, SetStateAction } from 'react'
+import { useState, useEffect } from 'react'
 import QRCode from 'qrcode'
 import './App.css'
+import placeholderQRUrl from '/empty-qr-placeholder.png'
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
       setCanDownload(true)
       setQRError(false)
     } catch (err) {
-      setQRCodeURL("/empty-qr-placeholder.png")
+      setQRCodeURL(placeholderQRUrl)
       setCanDownload(false)
       // console.error(err);
       if (inputValue.length > 0) {
