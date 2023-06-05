@@ -46,7 +46,7 @@ function App() {
     <>
       <img src={qrCodeURL} alt='QR Code' />
       <br></br>
-      <input type='text' value={inputValue} onChange={handleChange} className='qr-input' placeholder='Input text, URL...' />
+      <input type='text' value={inputValue} onChange={handleChange} className='qr-input' placeholder='Input text, URL...' autoFocus/>
       <br></br>
       <div className='option-row'>
         <div className="qr-option">
