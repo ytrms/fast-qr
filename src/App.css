@@ -20,10 +20,33 @@
 }
 
 select {
-  padding: 5px;
+  padding: 3px;
   margin: 2px;
 }
 
 button {
   margin: 16px;
+}
+
+.top-div {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.bottom-div {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.bottom-div a {
+  color: gray;
+  font-size: small;
+}
+
+.show-options-button {
+  /* font-size: small; */
+  color: gray;
 }

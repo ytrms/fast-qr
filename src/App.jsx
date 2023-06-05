@@ -10,6 +10,7 @@ function App() {
   const [errorCorrectionLevel, setErrorCorrectionLevel] = useState("M")
   const [canDownload, setCanDownload] = useState(false)
   const [qrError, setQRError] = useState(false)
+  const [showOptions, setShowOptions] = useState(false)
 
   const generateQR = async () => {
     try {
@@ -47,21 +48,27 @@ function App() {
       <img src={qrCodeURL} alt='QR Code' />
       <br></br>
       <input type='text' value={inputValue} onChange={handleChange} className='qr-input' placeholder='Input text, URL...' autoFocus/>
+      <a href={canDownload ? qrCodeURL : "#"} download="qrcode.png">
+        <button disabled={!canDownload}>{qrError ? "Data can't fit. Trim data or lower error correction." : "Download QR Code"}</button>
+      </a>
       <br></br>
-      <div className='option-row'>
-        <div className="qr-option">
-          Error Correction
-          <select value={errorCorrectionLevel} onChange={handleErrorChange}>
-            <option value="L">L (Low)</option>
-            <option value="M">M (Medium)</option>
-            <option value="Q">Q (Quartile)</option>
-            <option value="H">H (High)</option>
-          </select>
+      <button onClick={() => setShowOptions(!showOptions)} className='show-options-button'>
+        {showOptions ? "Advanced Options ▲" : 'Advanced Options ▼'}
+      </button>
+      <div style={{display: showOptions ? 'block': 'none'}}>
+        <div className='option-row'>
+          <div className="qr-option">
+            Error Correction
+            <select value={errorCorrectionLevel} onChange={handleErrorChange}>
+              <option value="L">L (Low)</option>
+              <option value="M">M (Medium)</option>
+              <option value="Q">Q (Quartile)</option>
+              <option value="H">H (High)</option>
+            </select>
+          </div>
         </div>
       </div>
-      <a href={canDownload ? qrCodeURL : "#"} download="qrcode.png">
-        <button disabled={!canDownload}>{qrError ? "The data can't fit. Trim data or lower error" : "Download QR Code"}</button>
-      </a>
+      <div className='bottom-div'><a href='https://lorenzogravina.com'>lorenzogravina.com</a> · <a href='https://github.com/ytrms/fast-qr/'>source code</a></div>
     </>
   )
 }
